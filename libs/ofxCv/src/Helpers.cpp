@@ -49,9 +49,6 @@ namespace ofxCv {
     }
     
 	void drawMat(Mat& mat, float x, float y, float width, float height) {
-        if(mat.empty()) {
-            return;
-        }
         ofTexture tex;
         copy(mat, tex);
 		tex.draw(x, y, width, height);

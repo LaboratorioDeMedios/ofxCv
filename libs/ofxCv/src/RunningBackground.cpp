@@ -1,5 +1,4 @@
 #include "ofxCv/RunningBackground.h"
-#include "ofxCv/Wrappers.h"
 
 namespace ofxCv {
 	RunningBackground::RunningBackground()
@@ -23,7 +22,7 @@ namespace ofxCv {
 			case BRIGHTER: cv::subtract(frame, background, foreground); break;
 			case DARKER: cv::subtract(background, frame, foreground); break;
 		}
-        ofxCv::copyGray(foreground, foregroundGray);
+		cv::cvtColor(foreground, foregroundGray, CV_RGB2GRAY);
 		int thresholdMode = ignoreForeground ? cv::THRESH_BINARY_INV : cv::THRESH_BINARY;
 		cv::threshold(foregroundGray, thresholded, thresholdValue, 255, thresholdMode);
 
